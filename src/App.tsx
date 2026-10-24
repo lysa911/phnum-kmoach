@@ -497,6 +497,10 @@ function MakingOf() {
     const tl = gsap.timeline();
     
     if (pageIndex === 2) {
+      // First, make page 2 visible but off-screen
+      tl.set('.mo-page-2', { display: 'block', x: '100%', opacity: 1 });
+      
+      // Then animate page 1 out and page 2 in
       tl.to('.mo-page-1', {
         x: '-100%',
         opacity: 0,
@@ -505,16 +509,17 @@ function MakingOf() {
         onComplete: () => {
           document.querySelector('.mo-page-1')?.setAttribute('style', 'display: none');
         }
-      });
-      
-      tl.set('.mo-page-2', { display: 'block', x: '100%' })
-        .to('.mo-page-2', {
-          x: '0%',
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
+      })
+      .to('.mo-page-2', {
+        x: '0%',
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '<');
     } else {
+      // First, make page 1 visible but off-screen
+      tl.set('.mo-page-1', { display: 'block', x: '-100%', opacity: 1 });
+      
+      // Then animate page 2 out and page 1 in
       tl.to('.mo-page-2', {
         x: '100%',
         opacity: 0,
@@ -523,15 +528,12 @@ function MakingOf() {
         onComplete: () => {
           document.querySelector('.mo-page-2')?.setAttribute('style', 'display: none');
         }
-      });
-      
-      tl.set('.mo-page-1', { display: 'block', x: '-100%' })
-        .to('.mo-page-1', {
-          x: '0%',
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
+      })
+      .to('.mo-page-1', {
+        x: '0%',
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '<');
     }
     
     setCurrentPage(pageIndex);
@@ -591,12 +593,19 @@ function MakingOf() {
                 className="mo-watch-full-btn" 
                 onClick={() => {
                   goToPage(2);
+                  // Wait for page transition to complete, then scroll
                   setTimeout(() => {
                     const page2 = document.querySelector('.mo-page-2');
-                    if (page2) {
-                      page2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const moSection = document.querySelector('.mo-section');
+                    if (page2 && moSection) {
+                      // Scroll to the Making Of section first
+                      const sectionTop = moSection.getBoundingClientRect().top + window.pageYOffset;
+                      window.scrollTo({
+                        top: sectionTop,
+                        behavior: 'smooth'
+                      });
                     }
-                  }, 900);
+                  }, 1200);
                 }}
               >
                 Watch Full Video →
@@ -665,12 +674,19 @@ function MakingOf() {
                 className="mo-back-full-btn" 
                 onClick={() => {
                   goToPage(1);
+                  // Wait for page transition to complete, then scroll
                   setTimeout(() => {
                     const page1 = document.querySelector('.mo-page-1');
-                    if (page1) {
-                      page1.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const moSection = document.querySelector('.mo-section');
+                    if (page1 && moSection) {
+                      // Scroll to the Making Of section first
+                      const sectionTop = moSection.getBoundingClientRect().top + window.pageYOffset;
+                      window.scrollTo({
+                        top: sectionTop,
+                        behavior: 'smooth'
+                      });
                     }
-                  }, 900);
+                  }, 1200);
                 }}
               >
                 ← Back
