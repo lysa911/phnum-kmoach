@@ -754,15 +754,19 @@ blockquote.quote-text {
   position: relative;
   width: 100%;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .mo-page {
   width: 100%;
+  min-height: 100vh;
+  padding: 60px 0;
   will-change: transform, opacity;
 }
 
 .mo-page-1 {
   position: relative;
+  background: #0a0a0a;
 }
 
 .mo-page-2 {
@@ -770,12 +774,8 @@ blockquote.quote-text {
   top: 0;
   left: 0;
   display: none;
-}
-
-.mo-page-2 {
   background: #f5f5f0;
   color: #1a1a1a;
-  padding: 60px 0;
 }
 
 .mo-page-2 .mo-step-title {
@@ -798,8 +798,13 @@ blockquote.quote-text {
 }
 
 .mo-page-2 .mo-step-video {
-  box-shadow: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.mo-page-2 .mo-step-image {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .mo-steps {
@@ -821,6 +826,9 @@ blockquote.quote-text {
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
+  background: #111;
+  border: 2px solid #333;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
 .mo-step-image img {
@@ -829,7 +837,6 @@ blockquote.quote-text {
   object-fit: cover;
   display: block;
   filter: grayscale(60%) contrast(1.1) brightness(0.9);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
 .mo-step-video {
