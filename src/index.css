@@ -1118,7 +1118,7 @@ blockquote.quote-text {
 .about-section {
   background: var(--c-black);
   color: var(--c-white);
-  padding: 120px 60px;
+  padding: 120px 0;
   position: relative;
   overflow: hidden;
 }
@@ -1134,8 +1134,8 @@ blockquote.quote-text {
 }
 
 .about-container {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
@@ -1148,17 +1148,17 @@ blockquote.quote-text {
   flex-direction: column;
   gap: 20px;
   position: relative;
-  padding: 60px 40px 60px 60px;
+  padding: 80px 60px;
   overflow: hidden;
   background: #1a1a1a;
 }
 
 .contact-bg {
   position: absolute;
-  top: -60px;
+  top: -80px;
   left: -60px;
-  right: -40px;
-  bottom: -60px;
+  right: -60px;
+  bottom: -80px;
   z-index: 0;
   overflow: hidden;
 }
@@ -1275,7 +1275,7 @@ blockquote.quote-text {
   flex-direction: column;
   gap: 30px;
   background: #FF8C00;
-  padding: 60px 60px 60px 40px;
+  padding: 80px 60px;
   position: relative;
   color: #1a1a1a;
 }
@@ -1376,6 +1376,10 @@ blockquote.quote-text {
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .about-section {
+    padding: 80px 0;
+  }
+  
   .about-container {
     grid-template-columns: 1fr;
     gap: 0;
@@ -1383,14 +1387,14 @@ blockquote.quote-text {
   
   .contact-section,
   .production-section {
-    padding: 50px 40px;
+    padding: 60px 40px;
   }
   
   .contact-bg {
-    top: -50px;
+    top: -60px;
     left: -40px;
     right: -40px;
-    bottom: -50px;
+    bottom: -60px;
   }
   
   .production-logos {
@@ -1501,17 +1505,17 @@ blockquote.quote-text {
   .press-quote { font-size: clamp(1rem, 4vw, 1.4rem); margin: 50px auto 0; }
   .press-source { font-size: 0.65rem; }
   
-  .about-section { padding: 60px 20px; }
-  .about-container { gap: 60px; }
+  .about-section { padding: 60px 0; }
+  .about-container { gap: 0; }
   .contact-section,
   .production-section {
-    padding: 40px 30px;
+    padding: 50px 30px;
   }
   .contact-bg {
-    top: -40px;
+    top: -50px;
     left: -30px;
     right: -30px;
-    bottom: -40px;
+    bottom: -50px;
   }
   .production-logos { gap: 20px; }
   .production-logo { width: 120px; height: 120px; padding: 20px; }
@@ -1556,16 +1560,16 @@ blockquote.quote-text {
   .laurel-item { width: 120px; }
   .laurel-img { width: 100px; height: 100px; }
   
-  .about-section { padding: 50px 16px; }
+  .about-section { padding: 50px 0; }
   .contact-section,
   .production-section {
-    padding: 30px 20px;
+    padding: 40px 20px;
   }
   .contact-bg {
-    top: -30px;
+    top: -40px;
     left: -20px;
     right: -20px;
-    bottom: -30px;
+    bottom: -40px;
   }
   .production-logos { gap: 15px; }
   .production-logo { width: 100px; height: 100px; padding: 15px; }
