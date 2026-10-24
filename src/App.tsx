@@ -437,6 +437,7 @@ function QuoteSection() {
 function MakingOf() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [videoPlaying, setVideoPlaying] = useState<number | null>(null);
 
   const steps = [
     {
@@ -600,11 +601,21 @@ function MakingOf() {
                 {video.align === 'left' ? (
                   <>
                     <div className="mo-step-video">
-                      <iframe 
-                        src={video.videoUrl} 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowFullScreen>
-                      </iframe>
+                      {videoPlaying !== i ? (
+                        <div className="mo-video-overlay" onClick={() => setVideoPlaying(i)}>
+                          <div className="mo-play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      ) : (
+                        <iframe 
+                          src={video.videoUrl + '?autoplay=1'}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                          allowFullScreen>
+                        </iframe>
+                      )}
                     </div>
                     <div className="mo-step-content">
                       <h3 className="mo-step-title">{video.title}</h3>
@@ -628,11 +639,21 @@ function MakingOf() {
                       )}
                     </div>
                     <div className="mo-step-video">
-                      <iframe 
-                        src={video.videoUrl} 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowFullScreen>
-                      </iframe>
+                      {videoPlaying !== i ? (
+                        <div className="mo-video-overlay" onClick={() => setVideoPlaying(i)}>
+                          <div className="mo-play-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      ) : (
+                        <iframe 
+                          src={video.videoUrl + '?autoplay=1'}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                          allowFullScreen>
+                        </iframe>
+                      )}
                     </div>
                   </>
                 )}

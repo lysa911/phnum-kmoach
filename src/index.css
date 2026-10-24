@@ -837,6 +837,51 @@ blockquote.quote-text {
   border: none;
 }
 
+.mo-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mo-video-overlay:hover {
+  background: #1a1a1a;
+}
+
+.mo-play-button {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mo-video-overlay:hover .mo-play-button {
+  border-color: #fff;
+  transform: scale(1.1);
+}
+
+.mo-play-button svg {
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 4px;
+}
+
+.mo-video-overlay:hover .mo-play-button svg {
+  color: #fff;
+}
+
 .mo-step-content {
   display: flex;
   flex-direction: column;
