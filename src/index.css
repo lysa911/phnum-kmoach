@@ -1138,8 +1138,8 @@ blockquote.quote-text {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 150px;
-  align-items: start;
+  gap: 0;
+  align-items: stretch;
 }
 
 /* Left Side - Contact Form */
@@ -1148,7 +1148,7 @@ blockquote.quote-text {
   flex-direction: column;
   gap: 20px;
   position: relative;
-  padding: 60px 50px;
+  padding: 60px 40px 60px 60px;
   overflow: hidden;
 }
 
@@ -1273,7 +1273,7 @@ blockquote.quote-text {
   flex-direction: column;
   gap: 30px;
   background: #FF6B00;
-  padding: 60px 50px;
+  padding: 60px 60px 60px 40px;
   position: relative;
   color: #1a1a1a;
 }
@@ -1376,7 +1376,7 @@ blockquote.quote-text {
 @media (max-width: 1024px) {
   .about-container {
     grid-template-columns: 1fr;
-    gap: 80px;
+    gap: 0;
   }
   
   .contact-section,
