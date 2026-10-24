@@ -497,43 +497,49 @@ function MakingOf() {
     const tl = gsap.timeline();
     
     if (pageIndex === 2) {
-      // First, make page 2 visible but off-screen
-      tl.set('.mo-page-2', { display: 'block', x: '100%', opacity: 1 });
+      // Prepare page 2 off-screen to the right
+      tl.set('.mo-page-2', { display: 'block', xPercent: 100, opacity: 1, force3D: true });
       
-      // Then animate page 1 out and page 2 in
+      // Animate both pages simultaneously with GPU acceleration
       tl.to('.mo-page-1', {
-        x: '-100%',
+        xPercent: -100,
         opacity: 0,
-        duration: 0.8,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          document.querySelector('.mo-page-1')?.setAttribute('style', 'display: none');
-        }
+        duration: 1,
+        ease: 'power2.inOut',
+        force3D: true
       })
       .to('.mo-page-2', {
-        x: '0%',
-        duration: 0.8,
-        ease: 'power3.out'
-      }, '<');
+        xPercent: 0,
+        duration: 1,
+        ease: 'power2.inOut',
+        force3D: true
+      }, '<')
+      .call(() => {
+        // Hide page 1 after animation completes
+        document.querySelector('.mo-page-1')?.setAttribute('style', 'display: none');
+      });
     } else {
-      // First, make page 1 visible but off-screen
-      tl.set('.mo-page-1', { display: 'block', x: '-100%', opacity: 1 });
+      // Prepare page 1 off-screen to the left
+      tl.set('.mo-page-1', { display: 'block', xPercent: -100, opacity: 1, force3D: true });
       
-      // Then animate page 2 out and page 1 in
+      // Animate both pages simultaneously with GPU acceleration
       tl.to('.mo-page-2', {
-        x: '100%',
+        xPercent: 100,
         opacity: 0,
-        duration: 0.8,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          document.querySelector('.mo-page-2')?.setAttribute('style', 'display: none');
-        }
+        duration: 1,
+        ease: 'power2.inOut',
+        force3D: true
       })
       .to('.mo-page-1', {
-        x: '0%',
-        duration: 0.8,
-        ease: 'power3.out'
-      }, '<');
+        xPercent: 0,
+        duration: 1,
+        ease: 'power2.inOut',
+        force3D: true
+      }, '<')
+      .call(() => {
+        // Hide page 2 after animation completes
+        document.querySelector('.mo-page-2')?.setAttribute('style', 'display: none');
+      });
     }
     
     setCurrentPage(pageIndex);
