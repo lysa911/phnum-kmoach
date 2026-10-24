@@ -21,6 +21,7 @@ const ACTOR_IMG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/
 const GM_BG_IMG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/The-Tuol-Sleng-Museum-documents-Pol-Pot-Regime-Phnom-Penh-Cambodia.png';
 const LD_LOGO = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/LD%20logo.png';
 const MJQE_LOGO = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/mjqe-logo-removebg-preview.png';
+const MESSAGE_BG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/Timeline%201_01_00_02_05.jpg';
 
 // Navigation
 function Navigation() {
@@ -773,6 +774,10 @@ function AboutContact() {
       <div className="about-container">
         {/* Left Side - Contact Form */}
         <div className="contact-section">
+          <div className="contact-bg">
+            <img src={MESSAGE_BG} alt="" />
+          </div>
+          <div className="contact-content">
           <div className="section-label">Get in Touch</div>
           <h2 className="contact-title">Message to the Victim</h2>
           <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
@@ -793,6 +798,7 @@ function AboutContact() {
             </div>
             <button type="submit" className="submit-btn">Submit</button>
           </form>
+          </div>
         </div>
 
         {/* Right Side - Production Info */}
