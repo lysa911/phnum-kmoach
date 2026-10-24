@@ -497,8 +497,11 @@ function MakingOf() {
     const tl = gsap.timeline();
     
     if (pageIndex === 2) {
+      // Make page 1 absolute during animation
+      tl.set('.mo-page-1', { position: 'absolute' });
+      
       // Prepare page 2 off-screen to the right
-      tl.set('.mo-page-2', { display: 'block', xPercent: 100, opacity: 1, force3D: true });
+      tl.set('.mo-page-2', { display: 'block', position: 'relative', xPercent: 100, opacity: 1, force3D: true });
       
       // Animate both pages simultaneously with GPU acceleration
       tl.to('.mo-page-1', {
@@ -519,8 +522,11 @@ function MakingOf() {
         document.querySelector('.mo-page-1')?.setAttribute('style', 'display: none');
       });
     } else {
+      // Make page 2 absolute during animation
+      tl.set('.mo-page-2', { position: 'absolute' });
+      
       // Prepare page 1 off-screen to the left
-      tl.set('.mo-page-1', { display: 'block', xPercent: -100, opacity: 1, force3D: true });
+      tl.set('.mo-page-1', { display: 'block', position: 'relative', xPercent: -100, opacity: 1, force3D: true });
       
       // Animate both pages simultaneously with GPU acceleration
       tl.to('.mo-page-2', {

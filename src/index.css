@@ -754,15 +754,22 @@ blockquote.quote-text {
   position: relative;
   width: 100%;
   overflow: hidden;
-  min-height: 800px;
 }
 
 .mo-page {
   width: 100%;
+  will-change: transform, opacity;
+}
+
+.mo-page-1 {
+  position: relative;
+}
+
+.mo-page-2 {
   position: absolute;
   top: 0;
   left: 0;
-  will-change: transform, opacity;
+  display: none;
 }
 
 .mo-page-2 {
