@@ -592,8 +592,11 @@ function MakingOf() {
                 onClick={() => {
                   goToPage(2);
                   setTimeout(() => {
-                    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100);
+                    const page2 = document.querySelector('.mo-page-2');
+                    if (page2) {
+                      page2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }, 900);
                 }}
               >
                 Watch Full Video →
@@ -628,11 +631,6 @@ function MakingOf() {
                     <div className="mo-step-content">
                       <h3 className="mo-step-title">{video.title}</h3>
                       <p className="mo-step-description">{video.description}</p>
-                      {i === 0 && (
-                        <button className="mo-back-btn" onClick={() => goToPage(1)}>
-                          ← Back
-                        </button>
-                      )}
                     </div>
                   </>
                 ) : (
@@ -640,11 +638,6 @@ function MakingOf() {
                     <div className="mo-step-content">
                       <h3 className="mo-step-title">{video.title}</h3>
                       <p className="mo-step-description">{video.description}</p>
-                      {i === 0 && (
-                        <button className="mo-back-btn" onClick={() => goToPage(1)}>
-                          ← Back
-                        </button>
-                      )}
                     </div>
                     <div className="mo-step-video">
                       {videoPlaying !== i ? (
@@ -667,6 +660,22 @@ function MakingOf() {
                 )}
               </div>
             ))}
+            <div className="mo-back-full-container">
+              <button 
+                className="mo-back-full-btn" 
+                onClick={() => {
+                  goToPage(1);
+                  setTimeout(() => {
+                    const page1 = document.querySelector('.mo-page-1');
+                    if (page1) {
+                      page1.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }, 900);
+                }}
+              >
+                ← Back
+              </button>
+            </div>
           </div>
         </div>
       </div>
