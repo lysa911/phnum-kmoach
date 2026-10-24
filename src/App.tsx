@@ -583,14 +583,22 @@ function MakingOf() {
                 <div className="mo-step-content">
                   <h3 className="mo-step-title">{step.title}</h3>
                   <p className="mo-step-description">{step.description}</p>
-                  {i === 0 && (
-                    <button className="mo-watch-btn" onClick={() => goToPage(2)}>
-                      Watch Full Video →
-                    </button>
-                  )}
                 </div>
               </div>
             ))}
+            <div className="mo-watch-full-container">
+              <button 
+                className="mo-watch-full-btn" 
+                onClick={() => {
+                  goToPage(2);
+                  setTimeout(() => {
+                    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+              >
+                Watch Full Video →
+              </button>
+            </div>
           </div>
         </div>
 
