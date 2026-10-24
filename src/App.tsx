@@ -749,27 +749,19 @@ function AboutContact() {
   useEffect(() => {
     if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      // Animate logos
-      gsap.fromTo('.production-logo',
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 1, stagger: 0.2, ease: 'power3.out',
-          scrollTrigger: { trigger: '.production-logos', start: 'top 70%', end: 'top 30%', scrub: 1 }
+      // Animate left side
+      gsap.fromTo('.contact-section > *',
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.contact-section', start: 'top 70%', end: 'top 30%', scrub: 1 }
         }
       );
       
-      // Animate text content
-      gsap.fromTo('.about-text-content > *',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.about-text-content', start: 'top 70%', end: 'top 40%', scrub: 1 }
-        }
-      );
-      
-      // Animate contact form
-      gsap.fromTo('.contact-form > *',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.contact-form', start: 'top 80%', end: 'top 40%', scrub: 1 }
+      // Animate right side
+      gsap.fromTo('.production-section > *',
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 1, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.production-section', start: 'top 70%', end: 'top 30%', scrub: 1 }
         }
       );
     });
@@ -779,29 +771,46 @@ function AboutContact() {
   return (
     <section className="about-section" id="about" ref={sectionRef}>
       <div className="about-container">
-        {/* Production Companies */}
+        {/* Left Side - Contact Form */}
+        <div className="contact-section">
+          <div className="section-label">Get in Touch</div>
+          <h2 className="contact-title">Message to the Victim</h2>
+          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            <div className="form-group">
+              <input type="text" id="name" name="name" placeholder="Name" required />
+            </div>
+            <div className="form-group">
+              <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+            <div className="form-group">
+              <textarea id="message" name="message" placeholder="Message" rows={5} required></textarea>
+            </div>
+            <div className="form-group captcha-group">
+              <div className="captcha-box">
+                <input type="checkbox" id="captcha" name="captcha" required />
+                <label htmlFor="captcha">I'm not a robot</label>
+              </div>
+            </div>
+            <button type="submit" className="submit-btn">Submit</button>
+          </form>
+        </div>
+
+        {/* Right Side - Production Info */}
         <div className="production-section">
-          <div className="section-label">A Production By</div>
+          <div className="section-label">Produced By</div>
           <div className="production-logos">
             <div className="production-logo">
               <img src={LD_LOGO} alt="LD Pictures" />
             </div>
-            <div className="production-divider">×</div>
             <div className="production-logo">
               <img src={MJQE_LOGO} alt="MJQE" />
             </div>
           </div>
-        </div>
-
-        {/* About Text */}
-        <div className="about-text-content">
-          <h2 className="about-title">Preserving Memory,<br />Seeking Justice</h2>
-          <div className="about-text">
-            <p><strong>Blood Border</strong> is a collaborative documentary between LD Pictures and MJQE, founded by Kuoch Mengly, a survivor of the Khmer Rouge regime.</p>
-            <p>Through the partnership of experienced filmmakers and survivors, we uncover hidden truths and give voice to those who suffered during one of history's darkest chapters.</p>
-            <p>Our mission is to preserve memory, seek justice, and ensure that such atrocities are never forgotten.</p>
+          <div className="production-text">
+            <p>A collaborative documentary between LD Pictures and MJQE</p>
+            <p>Preserving memory, seeking justice</p>
           </div>
-          <div className="about-social">
+          <div className="production-social">
             <a href="#" className="social-icon" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -818,24 +827,6 @@ function AboutContact() {
               </svg>
             </a>
           </div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="contact-section">
-          <div className="section-label">Get in Touch</div>
-          <h2 className="contact-title">Contact Us</h2>
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-group">
-              <input type="text" id="name" name="name" placeholder="Name" required />
-            </div>
-            <div className="form-group">
-              <input type="email" id="email" name="email" placeholder="Email" required />
-            </div>
-            <div className="form-group">
-              <textarea id="message" name="message" placeholder="Message" rows={5} required></textarea>
-            </div>
-            <button type="submit" className="submit-btn">Send Message</button>
-          </form>
         </div>
       </div>
     </section>
