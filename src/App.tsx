@@ -19,6 +19,8 @@ const QUOTE_BG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/1
 const KM_IMG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/ghost-mountain.jpg?v=' + Date.now();
 const ACTOR_IMG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/1016(7).png?v=' + Date.now();
 const GM_BG_IMG = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/The-Tuol-Sleng-Museum-documents-Pol-Pot-Regime-Phnom-Penh-Cambodia.png';
+const LD_LOGO = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/LD%20logo.png';
+const MJQE_LOGO = 'https://raw.githubusercontent.com/StephenMen/webforfuns/main/mjqe-logo-removebg-preview.png';
 
 // Navigation
 function Navigation() {
@@ -747,12 +749,23 @@ function AboutContact() {
   useEffect(() => {
     if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo('.about-content > *',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 70%', end: 'top 30%', scrub: 1 }
+      // Animate logos
+      gsap.fromTo('.production-logo',
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1, stagger: 0.2, ease: 'power3.out',
+          scrollTrigger: { trigger: '.production-logos', start: 'top 70%', end: 'top 30%', scrub: 1 }
         }
       );
+      
+      // Animate text content
+      gsap.fromTo('.about-text-content > *',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '.about-text-content', start: 'top 70%', end: 'top 40%', scrub: 1 }
+        }
+      );
+      
+      // Animate contact form
       gsap.fromTo('.contact-form > *',
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
@@ -766,12 +779,26 @@ function AboutContact() {
   return (
     <section className="about-section" id="about" ref={sectionRef}>
       <div className="about-container">
-        <div className="about-content">
-          <div className="section-label">About Us</div>
-          <h2 className="about-title">A Collaboration Between Visionaries</h2>
+        {/* Production Companies */}
+        <div className="production-section">
+          <div className="section-label">A Production By</div>
+          <div className="production-logos">
+            <div className="production-logo">
+              <img src={LD_LOGO} alt="LD Pictures" />
+            </div>
+            <div className="production-divider">×</div>
+            <div className="production-logo">
+              <img src={MJQE_LOGO} alt="MJQE" />
+            </div>
+          </div>
+        </div>
+
+        {/* About Text */}
+        <div className="about-text-content">
+          <h2 className="about-title">Preserving Memory,<br />Seeking Justice</h2>
           <div className="about-text">
-            <p><strong>Blood Border</strong> is a collaborative production between <strong>LD Pictures</strong> and <strong>MJQE</strong>, a company founded by Kuoch Mengly, a survivor of the Khmer Rouge regime.</p>
-            <p>This documentary represents years of dedication to uncovering hidden truths and giving voice to those who suffered during one of history's darkest chapters. Through the partnership of experienced filmmakers and survivors, we bring you an authentic and powerful narrative.</p>
+            <p><strong>Blood Border</strong> is a collaborative documentary between LD Pictures and MJQE, founded by Kuoch Mengly, a survivor of the Khmer Rouge regime.</p>
+            <p>Through the partnership of experienced filmmakers and survivors, we uncover hidden truths and give voice to those who suffered during one of history's darkest chapters.</p>
             <p>Our mission is to preserve memory, seek justice, and ensure that such atrocities are never forgotten.</p>
           </div>
           <div className="about-social">
@@ -790,29 +817,22 @@ function AboutContact() {
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
-            <a href="#" className="social-icon" aria-label="Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-              </svg>
-            </a>
           </div>
         </div>
 
+        {/* Contact Form */}
         <div className="contact-section">
-          <div className="section-label">Contact Us</div>
-          <h2 className="contact-title">Get in Touch</h2>
+          <div className="section-label">Get in Touch</div>
+          <h2 className="contact-title">Contact Us</h2>
           <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
+              <input type="text" id="name" name="name" placeholder="Name" required />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+              <input type="email" id="email" name="email" placeholder="Email" required />
             </div>
             <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" placeholder="Your message..." rows={5} required></textarea>
+              <textarea id="message" name="message" placeholder="Message" rows={5} required></textarea>
             </div>
             <button type="submit" className="submit-btn">Send Message</button>
           </form>

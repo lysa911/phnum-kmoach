@@ -1118,39 +1118,97 @@ blockquote.quote-text {
 .about-section {
   background: var(--c-black);
   color: var(--c-white);
-  padding: 100px 60px;
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
 }
 
 .about-container {
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
 }
 
-.about-content {
+/* Production Logos */
+.production-section {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.production-logos {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.production-logo {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.production-logo:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.production-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.production-divider {
+  font-family: var(--font-print);
+  font-size: 3rem;
+  opacity: 0.3;
+  color: var(--c-white);
+}
+
+/* About Text */
+.about-text-content {
+  max-width: 800px;
+  margin: 0 auto 100px;
+  text-align: center;
 }
 
 .about-title {
   font-family: var(--font-print);
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  line-height: 1.2;
-  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.3;
+  margin-bottom: 40px;
   letter-spacing: 1px;
 }
 
 .about-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  opacity: 0.85;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  opacity: 0.8;
+  margin-bottom: 40px;
 }
 
 .about-text p {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .about-text strong {
@@ -1160,17 +1218,17 @@ blockquote.quote-text {
 
 .about-social {
   display: flex;
-  gap: 20px;
-  margin-top: 30px;
+  justify-content: center;
+  gap: 25px;
 }
 
 .social-icon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
@@ -1178,27 +1236,28 @@ blockquote.quote-text {
 
 .social-icon:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.5);
   color: #fff;
-  transform: translateY(-3px);
+  transform: translateY(-5px) scale(1.1);
 }
 
 .social-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
+/* Contact Form */
 .contact-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .contact-title {
   font-family: var(--font-print);
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   letter-spacing: 1px;
 }
 
@@ -1208,67 +1267,55 @@ blockquote.quote-text {
   gap: 24px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
 .form-group input,
 .form-group textarea {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--c-white);
-  padding: 14px 18px;
+  padding: 18px 24px;
   font-family: var(--font-typewriter);
   font-size: 1rem;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 150px;
 }
 
 .submit-btn {
-  background: #ffffff;
-  border: 2px solid #ffffff;
-  color: #000000;
-  padding: 16px 40px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: var(--c-white);
+  padding: 18px 50px;
   font-family: var(--font-typewriter);
   font-size: 0.9rem;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
-  align-self: flex-start;
+  align-self: center;
   margin-top: 10px;
 }
 
 .submit-btn:hover {
-  background: #f0f0f0;
-  border-color: #f0f0f0;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
@@ -1285,9 +1332,13 @@ blockquote.quote-text {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  .production-logos {
+    gap: 40px;
+  }
+  
+  .production-logo {
+    width: 150px;
+    height: 150px;
   }
   
   .mo-steps {
@@ -1390,8 +1441,11 @@ blockquote.quote-text {
   .press-source { font-size: 0.65rem; }
   
   .about-section { padding: 60px 20px; }
-  .about-container { gap: 50px; }
+  .production-logos { gap: 30px; flex-wrap: wrap; }
+  .production-logo { width: 120px; height: 120px; padding: 20px; }
+  .production-divider { font-size: 2rem; }
   .about-title, .contact-title { font-size: clamp(1.8rem, 6vw, 2.2rem); }
+  .about-text { font-size: 0.95rem; }
   .about-social { gap: 15px; }
   .social-icon { width: 36px; height: 36px; }
   .social-icon svg { width: 16px; height: 16px; }
@@ -1433,7 +1487,12 @@ blockquote.quote-text {
   .laurel-img { width: 100px; height: 100px; }
   
   .about-section { padding: 50px 16px; }
+  .production-section { margin-bottom: 60px; }
+  .production-logos { gap: 20px; }
+  .production-logo { width: 100px; height: 100px; padding: 15px; }
+  .production-divider { font-size: 1.5rem; }
   .about-title, .contact-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .about-text { font-size: 0.9rem; }
   .about-social { gap: 12px; }
   .social-icon { width: 32px; height: 32px; }
   .social-icon svg { width: 14px; height: 14px; }
