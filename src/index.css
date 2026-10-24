@@ -1150,14 +1150,15 @@ blockquote.quote-text {
   position: relative;
   padding: 60px 40px 60px 60px;
   overflow: hidden;
+  background: #1a1a1a;
 }
 
 .contact-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -60px;
+  left: -60px;
+  right: -40px;
+  bottom: -60px;
   z-index: 0;
   overflow: hidden;
 }
@@ -1385,6 +1386,13 @@ blockquote.quote-text {
     padding: 50px 40px;
   }
   
+  .contact-bg {
+    top: -50px;
+    left: -40px;
+    right: -40px;
+    bottom: -50px;
+  }
+  
   .production-logos {
     gap: 30px;
   }
@@ -1499,6 +1507,12 @@ blockquote.quote-text {
   .production-section {
     padding: 40px 30px;
   }
+  .contact-bg {
+    top: -40px;
+    left: -30px;
+    right: -30px;
+    bottom: -40px;
+  }
   .production-logos { gap: 20px; }
   .production-logo { width: 120px; height: 120px; padding: 20px; }
   .contact-title { font-size: clamp(1.8rem, 6vw, 2.2rem); }
@@ -1546,6 +1560,12 @@ blockquote.quote-text {
   .contact-section,
   .production-section {
     padding: 30px 20px;
+  }
+  .contact-bg {
+    top: -30px;
+    left: -20px;
+    right: -20px;
+    bottom: -30px;
   }
   .production-logos { gap: 15px; }
   .production-logo { width: 100px; height: 100px; padding: 15px; }
