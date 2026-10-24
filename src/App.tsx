@@ -686,19 +686,6 @@ function MakingOf() {
                 className="mo-back-full-btn" 
                 onClick={() => {
                   goToPage(1);
-                  // Wait for page transition to complete, then scroll
-                  setTimeout(() => {
-                    const page1 = document.querySelector('.mo-page-1');
-                    const moSection = document.querySelector('.mo-section');
-                    if (page1 && moSection) {
-                      // Scroll to the Making Of section first
-                      const sectionTop = moSection.getBoundingClientRect().top + window.pageYOffset;
-                      window.scrollTo({
-                        top: sectionTop,
-                        behavior: 'smooth'
-                      });
-                    }
-                  }, 1200);
                 }}
               >
                 ← Back
