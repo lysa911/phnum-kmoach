@@ -84,9 +84,6 @@ function Navigation() {
 // Hero
 function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const [trail, setTrail] = useState<Array<{x: number, y: number, id: number}>>([]);
-  const trailIdRef = useRef(0);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -96,53 +93,11 @@ function Hero() {
       .from('.hero-year', { opacity: 0, scale: 0.8, duration: 1, ease: 'power3.out' }, '-=0.5');
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMousePos({ x, y });
-    
-    // Add to trail
-    const newId = trailIdRef.current++;
-    setTrail(prev => [...prev.slice(-8), { x, y, id: newId }]);
-    
-    // Remove old trail points after delay
-    setTimeout(() => {
-      setTrail(prev => prev.filter(p => p.id !== newId));
-    }, 800);
-  };
-
   return (
-    <section className="hero" ref={heroRef} onMouseMove={handleMouseMove}>
-      <img src={IMG_1} alt="" className="hero-bg hero-bg-color" />
-      {/* Trail layers */}
-      {trail.map((point, index) => (
-        <img 
-          key={point.id}
-          src={IMG_1} 
-          alt="" 
-          className="hero-bg hero-bg-bw hero-bg-trail"
-          style={{
-            maskImage: `radial-gradient(circle ${150 + index * 15}px at ${point.x}% ${point.y}%, black 0%, transparent 100%)`,
-            WebkitMaskImage: `radial-gradient(circle ${150 + index * 15}px at ${point.x}% ${point.y}%, black 0%, transparent 100%)`,
-            opacity: (index + 1) / trail.length * 0.6,
-          }}
-        />
-      ))}
-      {/* Main overlay */}
-      <img 
-        src={IMG_1} 
-        alt="" 
-        className="hero-bg hero-bg-bw"
-        style={{
-          maskImage: `radial-gradient(circle 250px at ${mousePos.x}% ${mousePos.y}%, black 0%, transparent 100%)`,
-          WebkitMaskImage: `radial-gradient(circle 250px at ${mousePos.x}% ${mousePos.y}%, black 0%, transparent 100%)`,
-        }}
-      />
+    <section className="hero" ref={heroRef}>
+      <img src={IMG_1} alt="" className="hero-bg" />
       <div className="hero-content">
-        <h1 className="hero-title">
-          <span className="hero-title-base">BLOOD BORDER</span>
-        </h1>
+        <h1 className="hero-title">BLOOD BORDER</h1>
         <p className="hero-sub">Cambodia's Second Killing Field</p>
         <div className="hero-year">A Documentary Film</div>
       </div>
