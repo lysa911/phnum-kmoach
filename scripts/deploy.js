@@ -8,7 +8,8 @@ function run(cmd, cwd = process.cwd()) {
 }
 
 try {
-  console.log('Building project...');
+  process.env.GITHUB_PAGES = '1';
+  console.log('Building project for GitHub Pages...');
   run('npm run build');
 
   const distDir = path.resolve('dist');

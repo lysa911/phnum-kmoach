@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: "/phnum-kmoach/",
+  base: process.env.GITHUB_PAGES ? "/phnum-kmoach/" : "/",
   plugins: [react(), tailwindcss()],
   server: {
     host: "0.0.0.0",
