@@ -1308,10 +1308,11 @@ blockquote.quote-text {
   color: rgba(255, 255, 255, 0.4);
 }
 
+.submit-btn,
 .outline-glow {
   background: transparent;
-  border: 1.5px solid rgba(241, 207, 133, 0.7);
-  color: #f8edd1;
+  border: 1.5px solid #ffffff;
+  color: #ffffff;
   padding: 14px 44px;
   font-family: 'Cinzel', serif;
   font-size: 0.9rem;
@@ -1319,18 +1320,19 @@ blockquote.quote-text {
   letter-spacing: 4px;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 24px;
+  border-radius: 0;
   transition: all 0.3s ease;
   align-self: flex-start;
   margin-top: 10px;
-  box-shadow: 0 0 15px rgba(241, 207, 133, 0.15);
+  box-shadow: none;
 }
 
+.submit-btn:hover,
 .outline-glow:hover {
-  background: rgba(241, 207, 133, 0.1);
-  border-color: #f1cf85;
-  box-shadow: 0 0 25px rgba(241, 207, 133, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
   color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
@@ -1446,13 +1448,16 @@ blockquote.quote-text {
 .production-bottom {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
   width: 100%;
 }
 
 .production-social {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 14px;
 }
 
@@ -1488,9 +1493,14 @@ blockquote.quote-text {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #9f8452;
-  text-align: right;
+  text-align: center;
   opacity: 0.7;
-  max-width: 520px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.billing-row {
+  text-align: center;
 }
 
 /* Footer */
