@@ -745,13 +745,6 @@ function AboutContact() {
           <div className="contact-bg">
             <img src={MESSAGE_BG} alt="" />
           </div>
-          
-          <div className="contact-top-nav">
-            <div className="double-line-menu" aria-label="Menu">
-              <span className="line"></span>
-              <span className="line"></span>
-            </div>
-          </div>
 
           <div className="contact-content">
             <div className="section-label serif-label">GET IN TOUCH</div>
