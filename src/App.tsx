@@ -790,7 +790,6 @@ function AboutContact() {
         <div className="production-section">
           <div className="production-top-bar">
             <div className="section-label gold-label">PRODUCED BY</div>
-            <a href="#about" className="about-us-nav">ABOUT US</a>
           </div>
 
           <div className="production-center">
